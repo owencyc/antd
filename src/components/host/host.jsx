@@ -16,7 +16,8 @@ const columns = [{
 }];
 const users = [
   { username: '胡晓明', age: 27, gender: 'male' },
-  { username: '韩佳瑞', age: 29, gender: 'female' }
+  { username: '韩佳瑞', age: 29, gender: 'female' },
+  { username: '哈哈哈', age: 29, gender: 'female' }
 ]
 
 class Computer extends Component {
