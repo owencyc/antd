@@ -8,9 +8,15 @@ const TodoList=({list,toggleEvent})=>{
             {console.log(list)}
             {
                 
-                list.map(item=>(
-                    <Todo key={item.id} text={item.text} completed={item.completed} onClick={()=>toggleEvent(item.id)}></Todo>
-                ))
+                list.map(item=>{
+                    if(item.id%2==1){
+                        return (<Todo key={item.id} text={item.text+'奇数'} completed={item.completed} onClick={()=>toggleEvent(item.id)}></Todo>
+                        )
+                    }else{
+                       return  (
+                    <Todo key={item.id} text={item.text+'偶数'} completed={item.completed} onClick={()=>toggleEvent(item.id)}></Todo>
+                        )}
+                        })
             }
         </div>
     );
