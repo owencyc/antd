@@ -31,6 +31,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "less-loader": "^4.1.0"
+    "less-loader": "^4.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1"
   }
 }
