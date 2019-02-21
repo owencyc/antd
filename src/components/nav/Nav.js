@@ -6,7 +6,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 const Nav = ({ menus }) => {
     console.log('render nav...'); console.log(menus);
     return (
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             {menus.map(menu => {
                 console.log(menu);
                 if (menu.type === 'item') {

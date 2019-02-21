@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter ,HashRouter} from 'react-router-dom';
 import { Router, Route,Switch ,Redirect} from 'react-router'
 import Home from '../components/home/Home'
+import Nav1 from '../components/nav/Nav1'
 
 import Nav from '../containers/NavContainer'
 
@@ -21,10 +22,12 @@ render(){
       <BrowserRouter>
         <div>
           <Switch>
-          <Redirect exact from='/' to='/test'/>
+          <Redirect exact from='/' to='/home'/>
             <Route path="/" component={App} exact />
             {/* <Route path="/test" component={Computer} /> */}
             <Route path="/home" component={Home} />
+            <Route path="/t" component={Nav1} />
+
             <Route component={NotFound} />
           </Switch>
         </div>
