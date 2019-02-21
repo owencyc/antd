@@ -8,14 +8,15 @@ import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
+import RouterIndex from './routers/index.js';
 
-//ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<RouterIndex />, document.getElementById('root'));
 
 const store = createStore(rootReducer)
 
 render(
   <Provider store={store}>
-    <App />
+    <RouterIndex />
   </Provider>,
   document.getElementById('root')
 )

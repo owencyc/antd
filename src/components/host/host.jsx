@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Switch ,List,Table} from 'antd';
+import { Switch ,List,Table,Button} from 'antd';
 import Screen from '../screen/screen';
+import { Link ,Route} from 'react-router-dom';
+
 const columns = [{
   title: '姓名',
   dataIndex: 'username',
@@ -45,6 +47,12 @@ class Computer extends Component {
         <Screen sContent={this.state.status ? '开机了。。。' : null} />
 
         <Table dataSource={users} columns={columns} />
+        
+        <Button type="primary" >
+        <Link to="/home">move to nav</Link>
+                        
+                    </Button>
+                
       </div>
     )
   }

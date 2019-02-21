@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Comment ,Avatar,Tooltip} from 'antd';
+import { Comment ,Avatar,Tooltip,Button} from 'antd';
 import moment from 'moment';
-
+import { Link ,Route} from 'react-router-dom';
 //函数定义组件
 function CommentItem(props) {
     return (
@@ -38,6 +38,11 @@ class CommentList extends Component {
                         <CommentItem author={item.author} content={item.content}/>
                     );
                 })}
+                <Button type="primary" >
+        <Link to="/test">move to test</Link>
+                        
+                    </Button>
+                
             </div>
         )
     }

@@ -1,53 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon, Button } from 'antd';
+import { Link, Route, Switch } from 'react-router-dom';
 
-const Nav = ({ menus, menu_collapsed }) => (
-    <div style={{ width: 256 }}>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-        </Button>
-        <Menu
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            theme="dark"
-            inlineCollapsed={this.state.collapsed}
-        >
+const Nav = ({ menus }) => {
+    console.log('render nav...'); console.log(menus);
+    return (
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
             {menus.map(menu => {
-                if (menu.type == 'item') {
+                console.log(menu);
+                if (menu.type === 'item') {
                     return (
-                        <Menu.Item key={item.id}>
-                            <Icon type={item.icon} />
-                            <span>{item.text}}</span>
+                        <Menu.Item key={menu.id} >
+                            {menu.route ? (<Link to={menu.route} ><Icon type={menu.icon} />
+                                <span>{menu.text}</span></Link>) : (<div><Icon type={menu.icon} /> < span>{menu.text}</span></div>)}
+
                         </Menu.Item>)
-                } else if (menu.type == 'sub') {
+                } else if (menu.type === 'sub') {
                     return (
-                    <SubMenu key={item.id} title={<span><Icon type={item.icon} /><span>{item.text}</span></span>}>
-                        {item.subs.map(sub=>(<Menu.Item key={sub.id}>{sub.text}</Menu.Item>))}
-                    </SubMenu>)
+                        <Menu.SubMenu key={menu.id} title={<span><Icon type={menu.icon} /><span>{menu.text}</span></span>}>
+                            {menu.subs.map(sub => (<Menu.Item key={sub.id} >
+                                {sub.route ? (<Link to={sub.route} >
+                                    <span>{sub.text}</span></Link>) : (<div>{sub.text}</div>)}
+                            </Menu.Item>))}
+                        </Menu.SubMenu>)
                 }
             })}
-
-
         </Menu>
-    </div>
-)
+    )
+}
 
 Nav.propTypes = {
     menus: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
+        route: PropTypes.string,
         subs: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.string.isRequired,
             text: PropTypes.string.isRequired,
             icon: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired
-        }).isRequired)
-    }).isRequired).isRequired,
-    menu_collapsed: PropTypes.bool.isRequired
+            route: PropTypes.string.isRequired
+        }))
+    }).isRequired).isRequired
 }
 
 
